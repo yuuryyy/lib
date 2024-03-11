@@ -6,13 +6,11 @@
 #    By: ychagri <ychagri@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/03 01:10:21 by ychagri           #+#    #+#              #
-#    Updated: 2024/03/11 01:55:41 by ychagri          ###   ########.fr        #
+#    Updated: 2024/03/11 21:18:34 by ychagri          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
-
-NAME_P =  libftprintf.a
 
 CC = cc 
 
@@ -54,17 +52,11 @@ OBJS_P = $(SRC_P:.c=.o)
 OBJS_G = $(SRC_G:.c=.o)
 
 
-all:$(NAME) $(NAME_P) $(NAME_G)
+all:$(NAME)
 
-$(NAME): $(OBJS)
-	$(ARC) $(NAME) $(OBJS)
+$(NAME): $(OBJS) $(OBJS_P) $(OBJS_G)
+	$(ARC) $(NAME) $(OBJS) $(OBJS_P) $(OBJS_G)
 	
-$(NAME_P): $(OBJS_P)
-	$(ARC) $(NAME_P) $(OBJS_P)
-	
-$(NAME_G): $(OBJS_G)
-	$(ARC) $(NAME_G) $(OBJS_G)
-
 %.o : %.c	$(LIBRARY) $(LIBRARY_G) $(LIBRARY_P)
 	$(CC) $(CFLAGS) -c $<
 
@@ -76,8 +68,6 @@ clean:
 
 fclean: clean
 	rm -f $(NAME)
-	rm -f $(NAME_G)
-	rm -f $(NAME_P)
 
 re : fclean all 
 

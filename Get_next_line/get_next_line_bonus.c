@@ -6,11 +6,12 @@
 /*   By: ychagri <ychagri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 22:39:51 by ychagri           #+#    #+#             */
-/*   Updated: 2024/03/11 01:45:25 by ychagri          ###   ########.fr       */
+/*   Updated: 2024/03/11 21:24:07 by ychagri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+#include "../Libft/libft.h"
 
 char	*ft_getremainder(char *str, int *i)
 {
@@ -74,8 +75,8 @@ char	*currentline(char **str, int fd, int *i, char *buffer)
 			return (NULL);
 		}
 		buffer[read_size] = '\0';
-		*str = ft_strjoin(*str, buffer);
-		if (ft_strchr(*str, '\n'))
+		*str = ft_strjoin2(*str, buffer);
+		if (ft_strchr2(*str, '\n'))
 			break ;
 	}
 	free(buffer);
@@ -103,7 +104,3 @@ char	*get_next_line(int fd)
 	line = currentline(&str[fd], fd, &i, buffer);
 	return (line);
 }
-//void	leaks()
-//{
-//	system("leaks a.out");
-//}

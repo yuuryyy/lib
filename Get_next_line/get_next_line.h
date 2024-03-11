@@ -6,7 +6,7 @@
 /*   By: ychagri <ychagri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 20:14:05 by ychagri           #+#    #+#             */
-/*   Updated: 2023/11/30 17:16:08 by ychagri          ###   ########.fr       */
+/*   Updated: 2024/03/11 21:20:29 by ychagri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,7 @@
 # endif
 
 char	*get_next_line(int fd);
-int		ft_strlen(char *str);
-char	*ft_strjoin(char *s1, char *s2);
-int		ft_strchr(const char *s, int c);
+char	*ft_strjoin2(char *s1, char *s2);
+int		ft_strchr2(const char *s, int c);
 
 #endif

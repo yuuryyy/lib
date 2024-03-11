@@ -6,11 +6,12 @@
 /*   By: ychagri <ychagri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 19:02:45 by ychagri           #+#    #+#             */
-/*   Updated: 2024/03/11 01:36:26 by ychagri          ###   ########.fr       */
+/*   Updated: 2024/03/11 21:24:37 by ychagri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+#include "../Libft/libft.h"
 
 char	*ft_getremainder(char *str, int *i)
 {
@@ -63,7 +64,7 @@ char	*currentline(char **str, int fd, int *i, char *buffer)
 	int		read_size;
 
 	read_size = 1;
-	while (!ft_strchr(*str, '\n') && read_size)
+	while (!ft_strchr2(*str, '\n') && read_size)
 	{
 		read_size = read(fd, buffer, BUFFER_SIZE);
 		if (read_size <= 0 && ft_strlen(*str) == 0)
@@ -76,7 +77,7 @@ char	*currentline(char **str, int fd, int *i, char *buffer)
 		if (read_size == 0)
 			break ;
 		buffer[read_size] = '\0';
-		*str = ft_strjoin(*str, buffer);
+		*str = ft_strjoin2(*str, buffer);
 		if (!*str)
 			return (free(buffer), NULL);
 	}
@@ -105,10 +106,3 @@ char	*get_next_line(int fd)
 	line = currentline(&str, fd, &i, buffer);
 	return (line);
 }
-//int main()
-//{
-//    int fd = open("wakha.txt", O_RDONLY | O_CREAT, 0777); 
-
-//    printf("fd = %d\n", fd); 
-//    return 0; 
-//}
